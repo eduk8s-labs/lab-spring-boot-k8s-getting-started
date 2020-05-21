@@ -1,0 +1,6 @@
+resources
+README.md
+Dockerfile
+LICENSE
+kustomization.yaml
+maven-cache-docker

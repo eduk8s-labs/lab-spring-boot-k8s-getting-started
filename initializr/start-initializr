@@ -1,0 +1,17 @@
+#!/bin/bash
+set -x
+
+set -eo pipefail
+
+# Always recalculate the workshop directory in case running this due
+# to it being restarted within the context of the container.
+
+INITIALIZR_PORT=${INITIALIZR_PORT:-10189}
+INITIALIZR_TARGET_DIR=${INITIALIZR_TARGET_DIR:-"/home/eduk8s"}
+
+ARGS=""
+
+ARGS="$ARGS --initializr.project-location-container=$INITIALIZR_TARGET_DIR"
+ARGS="$ARGS --server.port=$INITIALIZR_PORT"
+
+exec java -jar initializr.jar $ARGS

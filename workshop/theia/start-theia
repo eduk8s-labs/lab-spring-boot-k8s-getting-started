@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -x
+
+set -eo pipefail
+
+XDG_CONFIG_HOME=/tmp/.config
+export XDG_CONFIG_HOME
+
+if [ x"$ENABLE_EDITOR_PLUGINS" == x"true" ]; then
+    THEIA_DEFAULT_PLUGINS=$THEIA_DEFAULT_PLUGINS,local-dir:/home/eduk8s/workshop/theia/plugins
+    THEIA_DEFAULT_PLUGINS=$THEIA_DEFAULT_PLUGINS,local-dir:/opt/workshop/theia/plugins
+    THEIA_DEFAULT_PLUGINS=$THEIA_DEFAULT_PLUGINS,local-dir:/opt/eduk8s/workshop/theia/plugins
+    THEIA_DEFAULT_PLUGINS=$THEIA_DEFAULT_PLUGINS,local-dir:/opt/theia/plugins
+
+    THEIA_DEFAULT_PLUGINS=${THEIA_DEFAULT_PLUGINS#","}
+
+    export THEIA_DEFAULT_PLUGINS
+fi
+
+THEIA_BIND_ADDRESS=${THEIA_BIND_ADDRESS:-127.0.0.1}
+
+cd /opt/theia
+
+# TODO: Find how to start a specific theia-workspace
+
+exec yarn theia start --hostname "$THEIA_BIND_ADDRESS" --port 10085 /home/eduk8s 

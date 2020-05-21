@@ -1,0 +1,9 @@
+name: Markdown Sample
+
+modules:
+    activate:
+        - intro
+        - exercises/step1
+        - exercises/step2
+        - exercises/step3
+        - finish
