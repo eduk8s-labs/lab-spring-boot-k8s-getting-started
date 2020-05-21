@@ -7,7 +7,7 @@ set -eo pipefail
 # to it being restarted within the context of the container.
 
 INITIALIZR_PORT=${INITIALIZR_PORT:-10189}
-INITIALIZR_TARGET_DIR=${INITIALIZR_TARGET_DIR:-"/home/eduk8s"}
+INITIALIZR_TARGET_DIR=${INITIALIZR_TARGET_DIR:-"/home/eduk8s/"}
 
 ARGS=""
 
