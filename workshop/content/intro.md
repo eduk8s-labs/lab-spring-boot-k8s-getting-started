@@ -4,8 +4,6 @@ Spring Boot is a great way to write an application in Java. This workshop shows 
 2. Containerize it, and push the container to a registry
 3. Deploy it to Kubernetes
 
-> NOTE: A Kubernetes cluster will start for you in the terminal on the right (if you are on a phone or a small device, rotate it to landscape to see the terminal). When the prompt appears you can proceed with the tutorial. 
-
 You will need a few minutes of time.
 
 We don't cover all the features of Spring and Spring Boot. For that you could go to the [Spring guides](https://spring.io/guides) or [Spring project homepages](https://spring.io/projects).
@@ -16,7 +14,9 @@ When it comes to deploying the application to Kubernetes, there are far too many
 
 ## How to use this Guide
 
-You can execute shell commands in the text in this pane by clicking on the little icon to the right of the code block. E.g. like this
+A Kubernetes cluster will start for you in the terminal on the right (if you are on a phone or a small device, rotate it to landscape to see the terminal). When the prompt appears you can proceed with the tutorial. 
+
+You can execute shell commands in the guide text by clicking on the little icon to the right of the code block. E.g. like this
 
 ```execute
 echo Hello World!
