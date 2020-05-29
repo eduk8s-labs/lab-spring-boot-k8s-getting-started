@@ -4,7 +4,27 @@ Spring Boot is a great way to write an application in Java. This workshop shows 
 2. Containerize it, and push the container to a registry
 3. Deploy it to Kubernetes
 
-> NOTE: A Kubernetes cluster will start for you in the terminal on the right (if you are on a phone or a small device, rotate it to landscape to see the terminal). When the prompt appears you can proceed with the tutorial.
+> NOTE: A Kubernetes cluster will start for you in the terminal on the right (if you are on a phone or a small device, rotate it to landscape to see the terminal). When the prompt appears you can proceed with the tutorial. 
+
+You can execute shell commands in the text in this pane by clicking on the little icon to the right of the code block. E.g. like this
+
+```execute
+ls -a
+```
+
+You should see some output:
+
+```
+.  ..  .cache  .config  .docker ...
+```
+
+The terminal may occasionally lose its connection to your browser. There is a "Refresh" link on the top right that can be used to rescue the session.
+
+As well as the terminal, to the right of this text you will see some buttons or tabs:
+
+* "Console": the Kubernetes console - a web application for exploring a Kubernetes cluster
+* "Editor": an embedded IDE with Java and Spring Boot tooling. You don't need to use it, but if you want to edit code in Java or YAML it will be useful.
+* "Initializr": an embedded version of [Spring Initializr](https://start.spring.io) that generates code in the lab container instead of downloading to your local machine.
 
 You will need a few minutes of time.
 
