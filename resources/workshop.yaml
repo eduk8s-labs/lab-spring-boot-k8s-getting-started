@@ -31,5 +31,5 @@ spec:
     - name: initializr
       port: 10189
     dashboards:
-    - name: initializr
+    - name: Initializr
       url: "$(ingress_protocol)://$(session_namespace)-initializr.$(ingress_domain)/"      
