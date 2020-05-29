@@ -1,4 +1,4 @@
-Before you can start, you need to install and start the Kubernetes cluster. In this environment we have already taken care of that for you. 
+Before you can start, you need to install and start the Kubernetes cluster. In this environment we have already taken care of that for you. The lab is running in a Kubernetes cluster and you have access to your own namespace in the same cluster.
 
 Check that you have a Kubernetes cluster running:
 

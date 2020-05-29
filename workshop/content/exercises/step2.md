@@ -19,13 +19,15 @@ ENTRYPOINT ["java","-cp","app:app/lib/*","com.example.demo.DemoApplication"]
 EOF
 ```
 
-Then build the container image, giving it a tag (choose your own ID instead of "{{ REGISTRY_HOST }}/springguides" if you are going to push to Dockerhub):
+You can open the `Dockerfile` in the editor and poke around if you like. It relies on the fact that we already built the jar file, so it just unpacks that in the `builder` stage, and then sets up the main container from the contents.
+
+Build the container image, giving it a tag (choose your own ID instead of "{{ REGISTRY_HOST }}/springguides" if you are going to push to Dockerhub):
 
 ```execute
 docker build -t {{ REGISTRY_HOST }}/springguides/demo .
 ```
 
-You can run the container locally:
+You can run the container on the command line using `docker`:
 
 ```execute
 docker run -p 8080:8080 {{ REGISTRY_HOST }}/springguides/demo
