@@ -24,10 +24,10 @@ spec:
         enabled: true
       editor:
         enabled: true
-      registry:
-        enabled: true
         plugins:
           enabled: true
+      registry:
+        enabled: true
       docker:
         enabled: true
     ingresses:
