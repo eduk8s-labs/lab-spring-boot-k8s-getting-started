@@ -1,33 +1,10 @@
-Create a `Dockerfile` by running this command:
-
-```execute
-cat > Dockerfile << EOF
-FROM openjdk:8-jdk-alpine AS builder
-WORKDIR target/dependency
-ARG APPJAR=target/*.jar
-COPY \${APPJAR} app.jar
-RUN jar -xf ./app.jar
-
-FROM openjdk:8-jre-alpine
-VOLUME /tmp
-ARG DEPENDENCY=target/dependency
-USER 1000:1000
-COPY --from=builder \${DEPENDENCY}/BOOT-INF/lib /app/lib
-COPY --from=builder \${DEPENDENCY}/META-INF /app/META-INF
-COPY --from=builder \${DEPENDENCY}/BOOT-INF/classes /app
-ENTRYPOINT ["java","-cp","app:app/lib/*","com.example.demo.DemoApplication"]
-EOF
-```
-
-You can open the `Dockerfile` in the editor and poke around if you like. It relies on the fact that we already built the jar file, so it just unpacks that in the `builder` stage, and then sets up the main container from the contents.
-
 Build the container image, giving it a tag (choose your own ID instead of "{{ REGISTRY_HOST }}/springguides" if you are going to push to Dockerhub):
 
 ```execute
-docker build -t {{ REGISTRY_HOST }}/springguides/demo .
+./mvnw package spring-boot:build-image -Dspring-boot.build-image.imageName={{ REGISTRY_HOST }}/springguides/demo
 ```
 
-You can run the container on the command line using `docker`:
+Note that you did not need a `Dockerfile`. You can run the container on the command line using `docker`:
 
 ```execute
 docker run -p 8080:8080 {{ REGISTRY_HOST }}/springguides/demo
