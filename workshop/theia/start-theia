@@ -22,6 +22,7 @@ THEIA_BIND_ADDRESS=${THEIA_BIND_ADDRESS:-127.0.0.1}
 
 cd /opt/theia
 
-# TODO: Find how to start a specific theia-workspace
-
-exec yarn theia start --hostname "$THEIA_BIND_ADDRESS" --port 10085 /home/eduk8s 
+mkdir -p /home/eduk8s/demo                                                                                                     
+EDITOR_HOME=${EDITOR_HOME:-/home/eduk8s/demo}                                                                                  
+                                                                                                                               
+exec yarn theia start --hostname "$THEIA_BIND_ADDRESS" --port 10085 $EDITOR_HOME                                               
