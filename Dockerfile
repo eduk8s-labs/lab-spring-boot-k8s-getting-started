@@ -1,4 +1,4 @@
-FROM boykoalex/eduk8s-initializr-test:latest as initializr
+FROM dsyer/eduk8s-initializr-test:latest as initializr
 
 FROM quay.io/eduk8s/jdk11-environment:master
 
