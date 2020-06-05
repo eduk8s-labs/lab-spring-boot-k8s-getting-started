@@ -33,6 +33,10 @@ spec:
     ingresses:
     - name: initializr
       port: 10189
+    - name: code
+      port: 1234
     dashboards:
     - name: Initializr
       url: "$(ingress_protocol)://$(session_namespace)-initializr.$(ingress_domain)/"      
+    - name: Code
+      url: "$(ingress_protocol)://$(session_namespace)-code.$(ingress_domain)/"      
