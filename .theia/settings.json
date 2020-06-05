@@ -16,5 +16,6 @@
         "**/.dockerignore": true,
         "**/.gitignore": true,
         "**/*.theia-workspace": true
-    }
+    },
+    "telemetry.enableTelemetry": false
 }

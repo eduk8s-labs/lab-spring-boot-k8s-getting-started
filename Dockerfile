@@ -9,4 +9,3 @@ COPY --chown=1001:0 initializr/initializr.conf /opt/eduk8s/etc/supervisor/
 COPY --chown=1001:0 . /home/eduk8s/
 RUN mv /home/eduk8s/workshop /opt/workshop && rm -rf /home/eduk8s/initializr
 RUN fix-permissions /home/eduk8s
-RUN cat ~/.theia/settings.json | jq '. + {"telemetry.enableTelemetry": false}' > foo && mv foo ~/.theia/settings.json
