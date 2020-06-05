@@ -5,7 +5,7 @@ FROM quay.io/eduk8s/jdk11-environment:master
 COPY --from=initializr --chown=1001:0 /opt/. /opt/.
 COPY --chown=1001:0 initializr/start-initializr /opt/eduk8s/sbin
 COPY --chown=1001:0 initializr/initializr.conf /opt/eduk8s/etc/supervisor/
-COPY --chown=1001:0 code-server/code-server.conf /opt/eduk8s/etc/supervisor/
+COPY --chown=1001:0 code-server/code-server.conf /opt/eduk8s/etc/supervisor/editor.conf
 
 RUN mkdir -p /home/eduk8s/.local/share/code-server/ && mv /opt/extensions /home/eduk8s/.local/share/code-server
 COPY --chown=1001:0 . /home/eduk8s/
