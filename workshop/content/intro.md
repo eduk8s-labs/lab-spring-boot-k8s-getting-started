@@ -30,7 +30,7 @@ Hello World!
 
 The terminal may occasionally lose its connection to your browser. There is a "Refresh" link on the top right that can be used to rescue the session. There is also a "Restart Session" link in the menu at the top right, in case you want to ditch everything and start again.
 
-As well as the terminal, to the right of this text you will see some buttons or tabs:
+As well as the terminal, to the right of this text you will see 3 additional tabs:
 
 * "Console": the Kubernetes console - a web application for exploring a Kubernetes cluster
 * "Editor": an embedded IDE with Java and Spring Boot tooling. You don't need to use it to complete the guide, but if you want to edit code in Java or YAML it will be useful.
