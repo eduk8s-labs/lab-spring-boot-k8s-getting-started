@@ -1,4 +1,4 @@
-The first thing we will do is create a Spring Boot application. If you have one you prefer to use already in github, you could clone it in the terminal (`git` and `java` are installed already). Or you can create an application from scratch using start.spring.io.
+The first thing we will do is create a Spring Boot application. If you have one you prefer to use already in github, you could clone it in the terminal (`git` and `java` are installed already). Or you can create an application from scratch using [start.spring.io](https://start.spring.io).
 
 Click on the `Initializr` tab above the terminals to generate the code. This is an embedded version of the application that powers [start.spring.io](https://start.spring.io). Select the webflux and actuator checkboxes and hit "Generate". Or you can use curl in the terminal:
 
