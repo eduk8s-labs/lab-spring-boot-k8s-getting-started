@@ -6,7 +6,7 @@ Spring Boot is a great way to write an application in Java. This workshop shows 
 
 You will need a few minutes of time.
 
-We don't cover all the features of Spring and Spring Boot. For that you could go to the [Spring guides](https://spring.io/guides) or [Spring project homepages](https://spring.io/projects).
+We don't cover all the features of Spring and Spring Boot. For that you could go to the [Spring guides](https://spring.io/guides) or [Spring project homepages](https://spring.io/projects). [Application]({{ INGRESS_PROTOCOL }}://{{ SESSION_NAMESPACE }}-application.{{ INGRESS_DOMAIN }}/).
 
 We also don't cover all the options available for building containers. There is a [Spring Boot topical guide](https://spring.io/guides/topicals/spring-boot-docker) covering some of those options in more detail.
 
