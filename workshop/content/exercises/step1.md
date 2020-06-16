@@ -68,7 +68,9 @@ curl localhost:8080/actuator | jq .
 }
 ```
 
-Finally:
+or visit them [in your browser](//{{ session_namespace }}-application.{{ ingress_domain }}/actuator).
+
+Finally shut down the app:
 
 ```execute
 <ctrl-c>

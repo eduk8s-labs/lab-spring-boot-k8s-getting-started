@@ -84,7 +84,7 @@ Now you need to be able to connect to the application, which you have exposed as
 kubectl port-forward svc/demo 8080:8080
 ```
 
-then you can verify that the app is running:
+then you can verify that the app [is running](//{{ session_namespace }}-application.{{ ingress_domain }}/actuator/health):
 
 ```execute-2
 curl localhost:8080/actuator/health

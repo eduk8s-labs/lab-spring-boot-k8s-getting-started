@@ -28,7 +28,7 @@ Sample output:
 2019-11-27 11:32:52.864  INFO 1 --- [           main] com.example.demo.DemoApplication         : Started DemoApplication in 5.662 seconds(JVM running for 6.273)
 ```
 
-Check that it works:
+Check that [it works](//{{ session_namespace }}-application.{{ ingress_domain }}/actuator/health):
 
 ```execute-2
 curl localhost:8080/actuator/health
