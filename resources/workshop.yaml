@@ -36,7 +36,7 @@ spec:
     - name: application
       port: 8080
     dashboards:
-    - name: Application
-      url: "$(ingress_protocol)://$(session_namespace)-application.$(ingress_domain)/"      
+    #- name: Application
+    #  url: "$(ingress_protocol)://$(session_namespace)-application.$(ingress_domain)/"      
     - name: Initializr
       url: "$(ingress_protocol)://$(session_namespace)-initializr.$(ingress_domain)/"      
