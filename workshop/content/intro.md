@@ -1,3 +1,7 @@
+<script src="./workshop.js"></script>
+
+<a href="http://localhost:10011/" class="ide-link">Navigate to line x,y</a>
+
 Spring Boot is a great way to write an application in Java. This workshop shows you how to create a Spring Boot application and run it in Kubernetes with as little fuss and bother as possible. And there's no YAML. To do this we need to do three things:
 
 1. Create a Spring Boot application
