@@ -25,9 +25,6 @@ COPY --chown=1001:0 initializr/initializr.conf /opt/eduk8s/etc/supervisor/
 
 COPY --from=code-server --chown=1001:0 /opt/code-server/java-extensions /opt/code-server/extensions
 
-COPY --chown=1001:0 /dashboard-customization/dashboard.pug /opt/gateway/views/dashboard.pug
-COPY --chown=1001:0 /dashboard-customization/dashboard.js /opt/gateway/routes/dashboard.js
-
 COPY --chown=1001:0 . /home/eduk8s/
 RUN mv /home/eduk8s/workshop /opt/workshop && rm -rf /home/eduk8s/initializr
 RUN fix-permissions /home/eduk8s
