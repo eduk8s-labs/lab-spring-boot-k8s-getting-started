@@ -15,7 +15,7 @@ RUN mkdir /opt/code-server/java-extensions && \
     /opt/code-server/bin/code-server --extensions-dir /opt/code-server/java-extensions --install-extension /tmp/eduk8s-vscode-helper-0.0.1.vsix
 
 
-FROM quay.io/eduk8s/jdk11-environment:master
+FROM quay.io/eduk8s/jdk11-environment:200701.051914.7abd512
 
 COPY --from=initializr --chown=1001:0 /opt/. /opt/.
 COPY --chown=1001:0 initializr/start-initializr /opt/eduk8s/sbin
