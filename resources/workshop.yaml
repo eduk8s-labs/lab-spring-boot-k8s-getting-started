@@ -24,8 +24,6 @@ spec:
         enabled: true
       editor:
         enabled: true
-        plugins:
-          enabled: true
       registry:
         enabled: true
       docker:
