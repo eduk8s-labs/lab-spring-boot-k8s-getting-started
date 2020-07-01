@@ -8,7 +8,7 @@ RUN unzip extension.zip
 RUN rm extension.zip
 RUN cd eduk8s-vscode-helper-master && npm install && npm run vsce-package && ls -la *.vsix
 
-FROM quay.io/eduk8s/pkgs-code-server:200607.120502.570e0c6 AS code-server
+FROM quay.io/eduk8s/pkgs-code-server:200617.031609.8e8a4e1 AS code-server
 
 COPY --from=node /work/eduk8s-vscode-helper-master/eduk8s-vscode-helper-0.0.1.vsix /tmp/eduk8s-vscode-helper-0.0.1.vsix
 RUN mkdir /opt/code-server/java-extensions && \
