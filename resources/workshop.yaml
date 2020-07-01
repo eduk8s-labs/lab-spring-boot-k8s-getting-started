@@ -35,8 +35,6 @@ spec:
       port: 10189
     - name: application
       port: 8080
-    - name: editor-remote-control
-      port: 10011
     dashboards:
     #- name: Application
     #  url: "$(ingress_protocol)://$(session_namespace)-application.$(ingress_domain)/"      
