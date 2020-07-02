@@ -3,17 +3,17 @@ FROM dsyer/eduk8s-initializr-test:latest as initializr
 FROM node:current as node
 RUN mkdir /work
 WORKDIR /work
-RUN curl https://codeload.github.com/kdvolder/eduk8s-vscode-helper/zip/master > extension.zip
+ADD https://codeload.github.com/kdvolder/eduk8s-vscode-helper/zip/891aa7e6a56552b8990eeb45ab0b9c9a1b8703a9 /work/extension.zip
 RUN unzip extension.zip 
 RUN rm extension.zip
-RUN cd eduk8s-vscode-helper-master && npm install && npm run vsce-package && ls -la *.vsix
+RUN cd eduk8s-vscode-helper-* && npm install && npm run vsce-package && mv *.vsix ..
 
 FROM quay.io/eduk8s/pkgs-code-server:200617.031609.8e8a4e1 AS code-server
 
-COPY --from=node /work/eduk8s-vscode-helper-master/eduk8s-vscode-helper-0.0.1.vsix /tmp/eduk8s-vscode-helper-0.0.1.vsix
+COPY --from=node --chown=1001:0 /work/eduk8s-vscode-helper-0.0.1.vsix /tmp/eduk8s-vscode-helper-0.0.1.vsix
 RUN mkdir /opt/code-server/java-extensions && \
-    /opt/code-server/bin/code-server --extensions-dir /opt/code-server/java-extensions --install-extension /tmp/eduk8s-vscode-helper-0.0.1.vsix
-
+    /opt/code-server/bin/code-server --extensions-dir /opt/code-server/java-extensions --install-extension /tmp/eduk8s-vscode-helper-0.0.1.vsix && \
+    rm /tmp/*.vsix
 
 FROM quay.io/eduk8s/jdk11-environment:200701.051914.7abd512
 
