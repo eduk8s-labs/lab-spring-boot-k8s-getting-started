@@ -1,0 +1,10 @@
+<script>
+    var code_server = {
+        url: "{{ingress_protocol}}://{{session_namespace}}.{{ingress_domain}}/code-server",
+
+        open_file: function(file, lineno=0) {
+            eduk8s.expose_dashboard("editor");
+            $.get(code_server.url+"/editor/line?file="+encodeURI(file)+"&line="+encodeURI(lineno));
+        }
+    };
+</script>
