@@ -25,6 +25,22 @@ COPY --chown=1001:0 initializr/initializr.conf /opt/eduk8s/etc/supervisor/
 
 COPY --from=code-server --chown=1001:0 /opt/code-server/java-extensions /opt/code-server/extensions
 
+# Install vscode-spring-initializr forked extension. Replace the original vscode Initializr extension
+RUN cd /opt \
+    && git clone --single-branch --branch customize https://github.com/BoykoAlex/vscode-spring-initializr \
+    && cd vscode-spring-initializr \
+    && npm install \
+    && npm install vsce --save-dev \
+    && ./node_modules/.bin/vsce package \
+    && rm -rf /opt/code-server/extensions/vscjava.vscode-spring-initializr* \
+    && /opt/code-server/bin/code-server --install-extension ./vscode-spring-initializr-0.4.8.vsix \
+    && cd ~ \
+    && rm -rf /opt/vscode-spring-initializr
+
+# Modify code-server settings to open projects in the current workspace by default
+RUN jq '."spring.initializr.defaultOpenProjectMethod"="Add to Workspace"' ~/.local/share/code-server/User/settings.json > ~/temp_settings.json \
+    && mv ~/temp_settings.json ~/.local/share/code-server/User/settings.json
+
 COPY --chown=1001:0 . /home/eduk8s/
 RUN mv /home/eduk8s/workshop /opt/workshop && rm -rf /home/eduk8s/initializr
 RUN fix-permissions /home/eduk8s
