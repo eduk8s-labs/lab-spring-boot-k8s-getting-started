@@ -1,0 +1,25 @@
+<script>
+    var code_server = {
+        url: "{{ingress_protocol}}://{{session_namespace}}.{{ingress_domain}}/code-server",
+
+        open_file: function(file, lineno=0, retries=15) {
+            eduk8s.expose_dashboard("editor");
+            $.get(code_server.url+"/editor/line?file="+encodeURI(file)+"&line="+encodeURI(lineno))
+            .done(function () {
+                console.log("code_server.open_file SUCCESS");
+            })
+            .fail(function() {
+                console.log("code-server.open_file request FAILED");
+                if (retries>0) {
+                    setTimeout(
+                        function () {
+                            console.log("code-server.open_file request Retrying...");
+                            code_server.open_file(file, lineno, retries-1);
+                        },
+                        1000
+                    );
+                }
+            });
+        }
+    };
+</script>

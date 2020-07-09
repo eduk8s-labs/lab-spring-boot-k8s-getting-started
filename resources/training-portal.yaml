@@ -3,10 +3,9 @@ kind: TrainingPortal
 metadata:
   name: lab-spring-boot-k8s-gs
 spec:
-  portal:
-    reserved: 1
-    capacity: 5
-    expires: 60m
-    orphaned: 5m
   workshops:
     - name: lab-spring-boot-k8s-gs
+      reserved: 1
+      capacity: 5
+      expires: 60m
+      orphaned: 5m
