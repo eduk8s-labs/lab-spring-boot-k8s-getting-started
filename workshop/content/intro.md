@@ -1,11 +1,3 @@
-<style>
-pre.pastable_header {
-  font-weight: bold;
-  padding-bottom: 0px;
-  background-color: BurlyWood;
-}
-</style>
-
 {% include "code-server/package.liquid" %}
 
 {% render "code-server/open-file-widget.liquid", file: "/home/eduk8s/Dockerfile", lineno: 8 %}
