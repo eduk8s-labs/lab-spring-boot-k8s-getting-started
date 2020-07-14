@@ -1,25 +1,62 @@
 <script>
-    var code_server = {
-        url: "{{ingress_protocol}}://{{session_namespace}}.{{ingress_domain}}/code-server",
 
-        open_file: function(file, lineno=1, retries=15) {
-            eduk8s.expose_dashboard("editor");
-            $.get(code_server.url+"/editor/line?file="+encodeURI(file)+"&line="+encodeURI(lineno))
-            .done(function () {
-                console.log("code_server.open_file SUCCESS");
-            })
-            .fail(function() {
-                console.log("code-server.open_file request FAILED");
-                if (retries>0) {
+    function retryOnFail(name, retries, chunk) {
+        var promise = chunk();
+        promise.done(function () {
+            console.log(name + " SUCCESS");
+        })
+        .fail(function () {
+            console.log(name + " FAIL");
+            if (retries>0) {
                     setTimeout(
                         function () {
-                            console.log("code-server.open_file request Retrying...");
-                            code_server.open_file(file, lineno, retries-1);
+                            console.log(name +" Retrying...");
+                            retryOnFail(name, retries-1, chunk);
                         },
                         1000
                     );
                 }
+        });
+    }
+
+    var code_server = {
+        url: "{{ingress_protocol}}://{{session_namespace}}.{{ingress_domain}}/code-server",
+
+        open_file: function(file, lineno=1) {
+            retryOnFail("code_server.open_file", 15, function () {
+                eduk8s.expose_dashboard("editor");
+                return $.get(code_server.url+"/editor/line?file="+encodeURIComponent(file)+"&line="+encodeURIComponent(lineno));
+            });
+        },
+
+        paste_in_file: function(file, prefix, paste) {
+            console.log("paste = ''"+paste+"'");
+            retryOnFail("code_server.paste_in_file", 15, function () {
+                eduk8s.expose_dashboard("editor");
+                var url = code_server.url+"/editor/paste?file="+encodeURIComponent(file)+"&prefix="+encodeURIComponent(prefix)+"&paste="+encodeURIComponent(paste);
+                console.log("request url = "+url);
+                return $.get(url);
             });
         }
     };
+
+    //insprired by workshop-markdown.js
+    $(document).ready(function() {
+        $.each([$('pre.pastable')], function() {
+            let pasteText = this.text();
+            let prefix = this.attr('data-prefix');
+            let file = this.attr('data-file');
+            this.empty();
+            this.append('<span class="copy-glyph fas fa-copy" aria-hidden="true"></span>');
+            this.append($('<pre class="pastable_header">').text('file: '+file));
+            this.append($('<code>').text(pasteText));
+            this.click(function(event) {
+                console.log("Paste text = "+pasteText);
+                console.log("Prefix = "+prefix);
+                console.log("File = "+file);
+                code_server.paste_in_file(file, prefix, pasteText);
+            });
+        })
+    });
+
 </script>

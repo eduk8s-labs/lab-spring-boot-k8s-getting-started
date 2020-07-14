@@ -1,7 +1,23 @@
+<style>
+pre.pastable_header {
+  font-weight: bold;
+  padding-bottom: 0px;
+  background-color: BurlyWood;
+}
+</style>
+
 {% include "code-server/package.liquid" %}
 
 {% render "code-server/open-file-widget.liquid", file: "/home/eduk8s/Dockerfile", lineno: 8 %}
 {% render "code-server/open-file-widget.liquid", file: "/home/eduk8s/exercises/.empty" %}
+
+When you see a block like below, you can click on it to paste it into an editor:
+
+<pre class="pastable" data-file="/home/eduk8s/Dockerfile" data-prefix="COPY --from">
+# Multiple lines
+# of stuff
+# to paste
+</pre>
 
 Spring Boot is a great way to write an application in Java. This workshop shows you how to create a Spring Boot application and run it in Kubernetes with as little fuss and bother as possible. And there's no YAML. To do this we need to do three things:
 
