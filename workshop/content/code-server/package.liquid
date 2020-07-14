@@ -53,7 +53,7 @@
 
     //insprired by workshop-markdown.js
     $(document).ready(function() {
-        $.each([$('pre.pastable')], function() {
+        $('pre.pastable').each(function() {
             let pasteText = this.text();
             let prefix = this.attr('data-prefix');
             let file = this.attr('data-file');
