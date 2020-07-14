@@ -3,7 +3,7 @@ FROM dsyer/eduk8s-initializr-test:latest as initializr
 FROM node:current as node
 RUN mkdir /work
 WORKDIR /work
-ADD https://codeload.github.com/eduk8s/eduk8s-vscode-helper/zip/master /work/extension.zip
+ADD https://codeload.github.com/eduk8s/eduk8s-vscode-helper/zip/cf456a259d81d56522898b6e6f487a0e6dbc742e /work/extension.zip
 RUN unzip extension.zip 
 RUN rm extension.zip
 RUN cd eduk8s-vscode-helper-* && npm install && npm run vsce-package && mv *.vsix ..
