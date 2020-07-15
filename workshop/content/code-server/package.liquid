@@ -7,6 +7,16 @@
       padding-bottom: 0px;
       background-color: BurlyWood;
     }
+
+    span.editor_link {
+      cursor:pointer;
+       color:blue;
+       text-decoration:underline;
+    }
+    span.editor_link:hover {
+       text-decoration:none;
+       text-shadow: 1px 1px 1px #555;
+    }
 </style>
     
 <script>
@@ -68,6 +78,24 @@
                 code_server.paste_in_file(file, prefix, pasteText);
             });
         })
+
+        $('span.editor_link').each(function () {
+            let text = $(this).text();
+            let lineno = $(this).attr('data-line');
+            if (!text) {
+                //produce our own text from file and lineno
+                text = file;
+                if (lineno) {
+                    text += ' line: ' +lineno;
+                } else {
+                    lineno = 1;
+                }
+                $(this).text(text);
+            }
+            $(this).click(function () {
+                code_server.open_file(file, lineno);
+            });
+        });
     });
 
 </script>

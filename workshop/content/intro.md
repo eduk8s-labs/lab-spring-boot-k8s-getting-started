@@ -29,6 +29,9 @@ Links like below can be clicked to open a file in the editor:
 
 - {% render "code-server/open-file-widget.liquid", file: "/home/eduk8s/Dockerfile", lineno: 8 %}
 - {% render "code-server/open-file-widget.liquid", file: "/home/eduk8s/exercises/.empty" %}
+- <span class="editor_link" data-file="/home/eduk8s/Dockerfile" data-line="8"/>
+- <span class="editor_link" data-file="/home/eduk8s/exercises/.empty"/>
+- <span class="editor_link" data-file="/home/eduk8s/exercises/Dockerfile" data-line="10">Click me</span>
 
 A Kubernetes cluster will start for you in the terminal on the right (if you are on a phone or a small device, rotate it to landscape to see the terminal). When the prompt appears you can proceed with the tutorial. 
 
