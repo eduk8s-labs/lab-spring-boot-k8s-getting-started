@@ -9,13 +9,15 @@
     }
 
     span.editor_link {
-      cursor:pointer;
-       color:blue;
-       text-decoration:underline;
+        color: #007bff;
+        text-decoration: none;
+        background-color: transparent;
+        cursor:pointer;
     }
     span.editor_link:hover {
        text-decoration:none;
-       text-shadow: 1px 1px 1px #555;
+       color:blue;
+       text-decoration:underline;
     }
 </style>
     
@@ -87,7 +89,7 @@
                 //produce our own text from file and lineno
                 text = file;
                 if (lineno) {
-                    text += ' line: ' +lineno;
+                    text += ':' +lineno;
                 } else {
                     lineno = 1;
                 }
