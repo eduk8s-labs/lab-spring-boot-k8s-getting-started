@@ -82,6 +82,7 @@
         $('span.editor_link').each(function () {
             let text = $(this).text();
             let lineno = $(this).attr('data-line');
+            let file = $(this).attr('data-file');
             if (!text) {
                 //produce our own text from file and lineno
                 text = file;
