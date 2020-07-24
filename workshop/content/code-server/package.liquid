@@ -19,6 +19,18 @@
        color: rgb(0, 86, 179);
        text-decoration:underline;
     }
+
+    span.editor_command_link {
+       color: #007bff;
+       text-decoration: none;
+       background-color: transparent;
+       cursor:pointer;
+    }
+    span.editor_command_link:hover {
+       text-decoration:none;
+       color: rgb(0, 86, 179);
+       text-decoration:underline;
+    }
 </style>
     
 <script>
@@ -49,6 +61,13 @@
             retryOnFail("code_server.open_file", 15, function () {
                 eduk8s.expose_dashboard("editor");
                 return $.get(code_server.url+"/editor/line?file="+encodeURIComponent(file)+"&line="+encodeURIComponent(lineno));
+            });
+        },
+
+        execute_command: function(commandId) {
+            retryOnFail("code_server.execute_command", 15, function () {
+                eduk8s.expose_dashboard("editor");
+                return $.get(code_server.url+"/command/" + encodeURIComponent(commandId));
             });
         },
 
@@ -98,6 +117,15 @@
             $(this).click(function () {
                 code_server.open_file(file, lineno);
             });
+        });
+
+        $('span.editor_command_link').each(function () {
+            const commandId = $(this).attr('data-command');
+            if (commandId) {
+                $(this).click(function () {
+                    code_server.execute_command(commandId);
+                });
+            }
         });
     });
 

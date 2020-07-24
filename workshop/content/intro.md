@@ -33,6 +33,9 @@ Links like below can be clicked to open a file in the editor:
 - <span class="editor_link" data-file="/home/eduk8s/exercises/.empty"/>
 - <span class="editor_link" data-file="/home/eduk8s/Dockerfile" data-line="10">Click me</span>
 
+Links to execute commands in the editor:
+- <span class="editor_command_link" data-command="spring.initializr.maven-project">Create Spring Boot Maven Project</span>
+
 A Kubernetes cluster will start for you in the terminal on the right (if you are on a phone or a small device, rotate it to landscape to see the terminal). When the prompt appears you can proceed with the tutorial. 
 
 You can execute shell commands in the guide text by clicking on the little icon to the right of the code block. E.g. like this
