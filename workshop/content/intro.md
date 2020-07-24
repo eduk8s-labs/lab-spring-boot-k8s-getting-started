@@ -25,6 +25,15 @@ When you see a block of code like below, you can click on it to automatically pa
 # to paste
 </pre>
 
+Or paste into a new file works too:
+
+<pre class="pastable" data-file="/tmp/newfile.txt">
+# Stuff that we
+# put in
+# the new file
+</pre>
+
+
 Links like below can be clicked to open a file in the editor:
 
 - {% render "code-server/open-file-widget.liquid", file: "/home/eduk8s/Dockerfile", lineno: 8 %}
