@@ -64,10 +64,15 @@
             });
         },
 
-        execute_command: function(commandId) {
+        execute_command: function(commandId, ...parameters) {
             retryOnFail("code_server.execute_command", 15, function () {
                 eduk8s.expose_dashboard("editor");
-                return $.get(code_server.url+"/command/" + encodeURIComponent(commandId));
+                return $.ajax({
+                    type: 'POST',
+                    url: code_server.url+"/command/" + encodeURIComponent(commandId),
+                    data: JSON.stringify(parameters),
+                    contentType: "application/json"
+                });
             });
         },
 
@@ -128,9 +133,18 @@
 
         $('span.editor_command_link').each(function () {
             const commandId = $(this).attr('data-command');
+            const parameters = [];
+            const self = this;
+            const foundElements = $(this).find('parameter');
+            foundElements.each(function() {
+                const text = $(this).text();
+                parameters.push(JSON.parse(text));
+                $(this).remove();
+                $(self).text($(self).text().trim());
+            });
             if (commandId) {
                 $(this).click(function () {
-                    code_server.execute_command(commandId);
+                    code_server.execute_command(commandId, ...parameters);
                 });
             }
         });

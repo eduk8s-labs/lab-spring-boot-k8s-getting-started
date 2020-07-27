@@ -105,3 +105,17 @@ echo "Text to copy"
 You may also see links that can be clicked to open a file in the editor: {% render "code-server/open-file-widget.liquid", file: "/home/eduk8s/Dockerfile", lineno: 8 %}
 
 There are also links to execute commands in the IDE, e.g: <span class="editor_command_link" data-command="workbench.action.terminal.toggleTerminal">Open Terminal</span>.
+
+Links to execute commands in the editor:
+- <span class="editor_command_link" data-command="spring.initializr.maven-project">Create Spring Boot Maven Project 
+    <parameter>
+    {
+        "language": "Java",
+        "dependencies": ["actuator", "web", "devtools"],
+        "artifactId": "web-project",
+        "groupId": "com.eduk8s.example"
+    }
+    </parameter>
+</span>
+
+List of all parameters for Initializr Create Project command can be found [here](https://github.com/BoykoAlex/vscode-spring-initializr/blob/customize/src/handler/GenerateProjectHandler.ts#L20).
