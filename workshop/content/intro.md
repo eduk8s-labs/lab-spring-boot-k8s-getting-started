@@ -17,6 +17,62 @@ When it comes to deploying the application to Kubernetes, there are far too many
 
 ## How to use this Guide
 
+
+When you see a block of code like below, you can click on it to automatically paste it into an editor:
+
+<pre class="pastable" data-file="/tmp/eduk8s/Dockerfile" data-prefix="COPY --from">
+# Multiple lines
+# of stuff
+# to paste
+</pre>
+
+Or paste into a new file works too:
+
+<pre class="pastable" data-file="/tmp/deploy.yml">
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nother
+          piece: here
+        - name: nginx
+          image: nginx:1.14.2
+          ports:
+          - containerPort: 80
+</pre>
+
+Text can also be pasted into a specific 'yaml path' location inside an existing yaml file.
+For example, the following pasts an extra container definition into the
+file created in the previous step:
+
+<pre class="pastable" data-yamlPath="spec.template.spec.containers">
+- name: another-container
+  image: blah
+  ports:
+  - containerPort: 6677
+</pre>
+
+Links like below can be clicked to open a file in the editor:
+
+- {% render "code-server/open-file-widget.liquid", file: "/home/eduk8s/Dockerfile", lineno: 8 %}
+- {% render "code-server/open-file-widget.liquid", file: "/home/eduk8s/exercises/.empty" %}
+- <span class="editor_link" data-file="/home/eduk8s/Dockerfile" data-line="8"/>
+- <span class="editor_link" data-file="/home/eduk8s/exercises/.empty"/>
+- <span class="editor_link" data-file="/home/eduk8s/Dockerfile" data-line="10">Click me</span>
+
 A Kubernetes cluster will start for you in the terminal on the right (if you are on a phone or a small device, rotate it to landscape to see the terminal). When the prompt appears you can proceed with the tutorial. 
 
 You can execute shell commands in the guide text by clicking on the little icon to the right of the code block. E.g. like this
