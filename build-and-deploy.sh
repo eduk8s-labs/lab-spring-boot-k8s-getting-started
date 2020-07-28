@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
-#docker build -t kdvolder/lab-spring-boot-k8s-getting-started .
-#docker push kdvolder/lab-spring-boot-k8s-getting-started
+docker build -t kdvolder/lab-spring-boot-k8s-getting-started .
+docker push kdvolder/lab-spring-boot-k8s-getting-started
 kubectl delete --namespace=lab-spring-boot-k8s-gs-w01 pods --all
 kubectl delete -f resources/workshop.yaml
 kubectl delete -f resources/training-portal.yaml
