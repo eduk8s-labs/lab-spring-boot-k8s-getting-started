@@ -48,4 +48,4 @@ echo "Text to copy"
 
 You may also see links that can be clicked to open a file in the editor: {% render "code-server/open-file-widget.liquid", file: "/home/eduk8s/Dockerfile", lineno: 8 %}
 
-There are also links to execute commands in the editor: <span class="editor_command_link" data-command="spring.initializr.maven-project">Create Spring Boot Maven Project</span>.
+There are also links to execute commands in the IDE, e.g: <span class="editor_command_link" data-command="workbench.action.terminal.toggleTerminal">Open Terminal</span>.
