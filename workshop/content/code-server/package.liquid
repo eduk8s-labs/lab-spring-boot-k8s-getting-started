@@ -94,7 +94,9 @@
             let yamlPath = $(this).attr('data-yaml-path');
             $(this).empty();
             $(this).append('<span class="copy-glyph fas fa-copy" aria-hidden="true"></span>');
-            $(this).append($('<pre class="pastable_header">').text('file: '+file));
+            $(this).append($('<pre class="pastable_header">').text(
+                'file: '+file (yamlPath ? "\nyamlPath: "+yamlPath : "")
+            ));
             $(this).append($('<code>').text(pasteText));
             $(this).click(function(event) {
                 console.log("Paste text = "+pasteText);
