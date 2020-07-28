@@ -58,7 +58,7 @@ Text can also be pasted into a specific 'yaml path' location inside an existing 
 For example, the following pasts an extra container definition into the
 file created in the previous step:
 
-<pre class="pastable" data-yamlPath="spec.template.spec.containers">
+<pre class="pastable" data-file="/tmp/deploy.yml" data-yamlPath="spec.template.spec.containers">
 - name: another-container
   image: blah
   ports:
