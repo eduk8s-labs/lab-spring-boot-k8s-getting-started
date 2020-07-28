@@ -71,11 +71,14 @@
             });
         },
 
-        paste_in_file: function(file, prefix, paste) {
+        paste_in_file: function(file, prefix, yamlPath, paste) {
             console.log("paste = ''"+paste+"'");
             retryOnFail("code_server.paste_in_file", 15, function () {
                 eduk8s.expose_dashboard("editor");
-                var url = code_server.url+"/editor/paste?file="+encodeURIComponent(file)+"&prefix="+encodeURIComponent(prefix)+"&paste="+encodeURIComponent(paste);
+                var url = code_server.url+"/editor/paste?file="+encodeURIComponent(file)+
+                    "&yamlPath="+encodeURIComponent(yamlPath)+
+                    "&prefix="+encodeURIComponent(prefix)+
+                    "&paste="+encodeURIComponent(paste);
                 console.log("request url = "+url);
                 return $.get(url);
             });
@@ -88,15 +91,19 @@
             let pasteText = $(this).text();
             let prefix = $(this).attr('data-prefix');
             let file = $(this).attr('data-file');
+            let yamlPath = $(this).attr('data-yaml-path');
             $(this).empty();
             $(this).append('<span class="copy-glyph fas fa-copy" aria-hidden="true"></span>');
-            $(this).append($('<pre class="pastable_header">').text('file: '+file));
+            $(this).append($('<pre class="pastable_header">').text(
+                'file: '+file + (yamlPath ? "\nyamlPath: "+yamlPath : "")
+            ));
             $(this).append($('<code>').text(pasteText));
             $(this).click(function(event) {
                 console.log("Paste text = "+pasteText);
                 console.log("Prefix = "+prefix);
+                console.log("YamlPath = "+yamlPath);
                 console.log("File = "+file);
-                code_server.paste_in_file(file, prefix, pasteText);
+                code_server.paste_in_file(file, prefix, yamlPath, pasteText);
             });
         })
 

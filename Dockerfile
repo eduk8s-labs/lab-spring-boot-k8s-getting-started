@@ -1,7 +1,7 @@
 FROM node:current as node
 RUN mkdir /work
 WORKDIR /work
-ADD https://codeload.github.com/eduk8s/eduk8s-vscode-helper/zip/4cdcfbb593119aef45f3af5fa552f3c1a817c85b /work/extension.zip
+ADD https://codeload.github.com/eduk8s/eduk8s-vscode-helper/zip/a085cf9f1a32ce0742fbf001835db88ddd06d0e1 /work/extension.zip
 RUN unzip extension.zip 
 RUN rm extension.zip
 RUN cd eduk8s-vscode-helper-* && npm install && npm run vsce-package && mv *.vsix ..
