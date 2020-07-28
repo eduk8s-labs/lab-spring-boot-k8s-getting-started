@@ -1,5 +1,3 @@
-FROM dsyer/eduk8s-initializr-test:latest as initializr
-
 FROM node:current as node
 RUN mkdir /work
 WORKDIR /work
@@ -33,10 +31,6 @@ RUN /opt/code-server/bin/code-server --extensions-dir /opt/code-server/java-exte
 
 FROM quay.io/eduk8s/jdk11-environment:200701.051914.7abd512
 
-COPY --from=initializr --chown=1001:0 /opt/. /opt/.
-COPY --chown=1001:0 initializr/start-initializr /opt/eduk8s/sbin
-COPY --chown=1001:0 initializr/initializr.conf /opt/eduk8s/etc/supervisor/
-
 # RUN mkdir -p /home/eduk8s/.local/share/code-server/ && cp -r /opt/extensions /home/eduk8s/.local/share/code-server
 
 # Remove original vscode-initializr extension before the new forked installed
@@ -50,7 +44,7 @@ RUN jq '."spring.initializr.defaultOpenProjectMethod"="Add to Workspace"' ~/.loc
     && mv ~/temp_settings.json ~/.local/share/code-server/User/settings.json
 
 COPY --chown=1001:0 . /home/eduk8s/
-RUN mv /home/eduk8s/workshop /opt/workshop && rm -rf /home/eduk8s/initializr
+RUN mv /home/eduk8s/workshop /opt/workshop
 RUN fix-permissions /home/eduk8s
 
 ENV EDITOR_HOME=/opt/workshop/exercises.code-workspace
