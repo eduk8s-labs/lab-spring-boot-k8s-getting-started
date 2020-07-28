@@ -47,7 +47,7 @@ echo --- >> deployment.yaml
 kubectl create service clusterip demo --tcp=8080:8080 --dry-run -o=yaml >> deployment.yaml
 ```
 
-You can open up the YAML in the IDE and have a <span class="editor_link" data-file="/home/eduk8s/exercises/demo/deployment.yaml">squint at it</span>. You can edit it if you like, or you can just apply it:
+You can <span class="editor_link" data-file="/home/eduk8s/exercises/demo/deployment.yaml">open up the YAML in the IDE</span> and have a look at it. You can edit it there, or you can just apply it from the command line:
 
 ```execute
 kubectl apply -f deployment.yaml
@@ -57,6 +57,8 @@ kubectl apply -f deployment.yaml
 deployment.apps/demo created
 service/demo created
 ```
+
+> NOTE: You can also use the Kubernetes extension in the IDE to deploy YAML files, to inspect the cluster, forward ports, etc.
 
 Check that the application is running:
 

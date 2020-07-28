@@ -33,35 +33,17 @@ Hello World!
 
 The terminal may occasionally lose its connection to your browser. There is a "Refresh" link on the top right that can be used to rescue the session. There is also a "Restart Session" link in the menu at the top right, in case you want to ditch everything and start again.
 
-As well as the terminal, to the right of this text you will see 3 additional tabs:
+As well as the terminal, to the right of this text you will see 2 additional tabs:
 
 * "Console": the Kubernetes console - a web application for exploring a Kubernetes cluster
 * "Editor": an embedded IDE with Java and Spring Boot tooling. You don't need to use it to complete the guide, but if you want to edit code in Java or YAML it will be useful.
 
-When you see a block of code like below, you can click on it to automatically paste it into an editor:
+Some code blocks are copyable with one click, so you can use those to transfer content from the workshop notes to an editor or terminal:
 
-<pre class="pastable" data-file="/home/eduk8s/Dockerfile" data-prefix="COPY --from">
-# Multiple lines
-# of stuff
-# to paste
-</pre>
+```copy
+echo "Text to copy"
+```
 
-Or paste into a new file works too:
+You may also see links that can be clicked to open a file in the editor: {% render "code-server/open-file-widget.liquid", file: "/home/eduk8s/Dockerfile", lineno: 8 %}.
 
-<pre class="pastable" data-file="/tmp/newfile.txt">
-# Stuff that we
-# put in
-# the new file
-</pre>
-
-
-Links like below can be clicked to open a file in the editor:
-
-- {% render "code-server/open-file-widget.liquid", file: "/home/eduk8s/Dockerfile", lineno: 8 %}
-- {% render "code-server/open-file-widget.liquid", file: "/home/eduk8s/exercises/.empty" %}
-- <span class="editor_link" data-file="/home/eduk8s/Dockerfile" data-line="8"/>
-- <span class="editor_link" data-file="/home/eduk8s/exercises/.empty"/>
-- <span class="editor_link" data-file="/home/eduk8s/Dockerfile" data-line="10">Click me</span>
-
-There are also links to execute commands in the editor:
-- <span class="editor_command_link" data-command="spring.initializr.maven-project">Create Spring Boot Maven Project</span>
+There are also links to execute commands in the editor: <span class="editor_command_link" data-command="spring.initializr.maven-project">Create Spring Boot Maven Project</span>.
