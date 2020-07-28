@@ -1,15 +1,17 @@
+{% include "code-server/package.liquid" %}
+
 The first thing we will do is create a Spring Boot application. If you have one you prefer to use already in github, you could clone it in the terminal (`git` and `java` are installed already). Or you can create an application from scratch using [start.spring.io](https://start.spring.io).
 
 Click on <span class="editor_command_link" data-command="spring.initializr.maven-project">this link</span> to generate the code and open it in the IDE. Select the webflux and actuator dependencies. Or you can use curl in the terminal:
 
 ```execute
-mkdir example && (cd example; curl https://start.spring.io/starter.tgz -d dependencies=webflux,actuator | tar -xzvf -)
+mkdir -p exercises/demo && (cd exercises/demo; curl https://start.spring.io/starter.tgz -d dependencies=webflux,actuator | tar -xzvf -)
 ```
 
 You can then build the application in the IDE or on the command line (amke sure you are in the correct directory - `example` if you used the links above):
 
 ```execute
-cd example && ./mvnw install
+cd exercises/demo && ./mvnw install
 ```
 
 > NOTE: It will take a couple of minutes the first time, but then once the dependencies are all cached it will be fast.

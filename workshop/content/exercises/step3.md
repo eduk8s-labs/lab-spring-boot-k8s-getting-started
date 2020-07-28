@@ -1,3 +1,5 @@
+{% include "code-server/package.liquid" %}
+
 Before you can start, you need to install and start the Kubernetes cluster. In this environment we have already taken care of that for you. The lab is running in a Kubernetes cluster and you have access to your own namespace in the same cluster.
 
 Check that you have a Kubernetes cluster running:
@@ -45,7 +47,7 @@ echo --- >> deployment.yaml
 kubectl create service clusterip demo --tcp=8080:8080 --dry-run -o=yaml >> deployment.yaml
 ```
 
-You can open up the YAML in the IDE and have a <span class="editor_link" data-file="/home/eduk8s/example/deployment.yaml">squint at it</span>. You can edit it if you like, or you can just apply it:
+You can open up the YAML in the IDE and have a <span class="editor_link" data-file="/home/eduk8s/exercises/demo/deployment.yaml">squint at it</span>. You can edit it if you like, or you can just apply it:
 
 ```execute
 kubectl apply -f deployment.yaml
