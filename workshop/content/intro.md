@@ -38,12 +38,14 @@ As well as the terminal, to the right of this text you will see 2 additional tab
 * "Console": the Kubernetes console - a web application for exploring a Kubernetes cluster
 * "Editor": an embedded IDE with Java and Spring Boot tooling. You don't need to use it to complete the guide, but if you want to edit code in Java or YAML it will be useful.
 
-Some code blocks are copyable with one click, so you can use those to transfer content from the workshop notes to an editor or terminal:
+> NOTE: The first time you open the IDE it might take a minute to warm up. If you are using the Java languange extensions they will also initialize lazily, when you first open an editor with some Java source.
+
+Some code blocks are copyable with one click, so you can use those to transfer content from the workshop notes to an editor or terminal (in the terminal use `CTRL-SHIFT-V` to paste):
 
 ```copy
 echo "Text to copy"
 ```
 
-You may also see links that can be clicked to open a file in the editor: {% render "code-server/open-file-widget.liquid", file: "/home/eduk8s/Dockerfile", lineno: 8 %}.
+You may also see links that can be clicked to open a file in the editor: {% render "code-server/open-file-widget.liquid", file: "/home/eduk8s/Dockerfile", lineno: 8 %}
 
 There are also links to execute commands in the editor: <span class="editor_command_link" data-command="spring.initializr.maven-project">Create Spring Boot Maven Project</span>.
