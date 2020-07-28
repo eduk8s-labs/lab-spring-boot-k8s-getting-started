@@ -7,3 +7,4 @@
 !.local/share/code-server/User/globalStorage/
 .config/
 .docker/
+.DS_Store

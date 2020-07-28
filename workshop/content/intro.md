@@ -17,6 +17,27 @@ When it comes to deploying the application to Kubernetes, there are far too many
 
 ## How to use this Guide
 
+A Kubernetes cluster will start for you in the terminal on the right (if you are on a phone or a small device, rotate it to landscape to see the terminal). When the prompt appears you can proceed with the tutorial. 
+
+You can execute shell commands in the guide text by clicking on the little icon to the right of the code block. E.g. like this
+
+```execute
+echo Hello World!
+```
+
+You should see some output:
+
+```
+Hello World!
+```
+
+The terminal may occasionally lose its connection to your browser. There is a "Refresh" link on the top right that can be used to rescue the session. There is also a "Restart Session" link in the menu at the top right, in case you want to ditch everything and start again.
+
+As well as the terminal, to the right of this text you will see 3 additional tabs:
+
+* "Console": the Kubernetes console - a web application for exploring a Kubernetes cluster
+* "Editor": an embedded IDE with Java and Spring Boot tooling. You don't need to use it to complete the guide, but if you want to edit code in Java or YAML it will be useful.
+
 When you see a block of code like below, you can click on it to automatically paste it into an editor:
 
 <pre class="pastable" data-file="/home/eduk8s/Dockerfile" data-prefix="COPY --from">
@@ -42,27 +63,5 @@ Links like below can be clicked to open a file in the editor:
 - <span class="editor_link" data-file="/home/eduk8s/exercises/.empty"/>
 - <span class="editor_link" data-file="/home/eduk8s/Dockerfile" data-line="10">Click me</span>
 
-Links to execute commands in the editor:
+There are also links to execute commands in the editor:
 - <span class="editor_command_link" data-command="spring.initializr.maven-project">Create Spring Boot Maven Project</span>
-
-A Kubernetes cluster will start for you in the terminal on the right (if you are on a phone or a small device, rotate it to landscape to see the terminal). When the prompt appears you can proceed with the tutorial. 
-
-You can execute shell commands in the guide text by clicking on the little icon to the right of the code block. E.g. like this
-
-```execute
-echo Hello World!
-```
-
-You should see some output:
-
-```
-Hello World!
-```
-
-The terminal may occasionally lose its connection to your browser. There is a "Refresh" link on the top right that can be used to rescue the session. There is also a "Restart Session" link in the menu at the top right, in case you want to ditch everything and start again.
-
-As well as the terminal, to the right of this text you will see 3 additional tabs:
-
-* "Console": the Kubernetes console - a web application for exploring a Kubernetes cluster
-* "Editor": an embedded IDE with Java and Spring Boot tooling. You don't need to use it to complete the guide, but if you want to edit code in Java or YAML it will be useful.
-* "Initializr": an embedded version of [Spring Initializr](https://start.spring.io) that generates code in the lab container instead of downloading to your local machine. You won't need it if you just want to click thrugh the course, but feel free to use it if you want to go off piste.
