@@ -31,6 +31,6 @@ spec:
     ingresses:
     - name: application
       port: 8080
-    dashboards:
+    #dashboards:
     #- name: Application
     #  url: "$(ingress_protocol)://$(session_namespace)-application.$(ingress_domain)/"      
