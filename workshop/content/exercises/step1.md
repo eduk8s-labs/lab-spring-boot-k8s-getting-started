@@ -5,13 +5,13 @@ The first thing we will do is create a Spring Boot application. If you have one 
 Click on <span class="editor_command_link" data-command="spring.initializr.maven-project">this link</span> to open the IDE and generate some code using start.spring.io - select the defaults for all options except the dependencies, where you will need webflux and actuator. If you don't want to use the IDE wizard you can use curl in the terminal:
 
 ```execute
-mkdir -p exercises/demo && (cd exercises/demo; curl https://start.spring.io/starter.tgz -d dependencies=webflux,actuator | tar -xzvf -)
+mkdir -p demo && (cd demo; curl https://start.spring.io/starter.tgz -d dependencies=webflux,actuator | tar -xzvf -)
 ```
 
-You can then build the application in the IDE or on the command line (amke sure you are in the correct directory - `example` if you used the links above):
+You can then build the application in the IDE or on the command line (amke sure you are in the correct directory - `demo` if you used the links above):
 
 ```execute
-cd exercises/demo && ./mvnw install
+cd demo && ./mvnw install
 ```
 
 > NOTE: It will take a couple of minutes the first time, but then once the dependencies are all cached it will be fast.
