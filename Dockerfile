@@ -29,7 +29,7 @@ COPY --from=node --chown=1001:0 /initializr-work/vscode-spring-initializr-0.4.8.
 RUN /opt/code-server/bin/code-server --extensions-dir /opt/code-server/java-extensions --install-extension /tmp/vscode-spring-initializr-0.4.8.vsix && \
     rm /tmp/*.vsix
 
-FROM quay.io/eduk8s/jdk11-environment:200701.051914.7abd512
+FROM quay.io/eduk8s/jdk11-environment:200729.072954.5481ef8
 
 # RUN mkdir -p /home/eduk8s/.local/share/code-server/ && cp -r /opt/extensions /home/eduk8s/.local/share/code-server
 
