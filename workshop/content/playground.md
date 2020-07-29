@@ -20,7 +20,7 @@ When it comes to deploying the application to Kubernetes, there are far too many
 
 When you see a block of code like below, you can click on it to automatically paste it into an editor:
 
-<pre class="pastable" data-file="/tmp/eduk8s/Dockerfile" data-prefix="COPY --from">
+<pre class="pastable" data-file="/home/eduk8s/Dockerfile" data-prefix="COPY --from">
 # Multiple lines
 # of stuff
 # to paste
