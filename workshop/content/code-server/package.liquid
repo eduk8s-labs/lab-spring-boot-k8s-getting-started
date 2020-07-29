@@ -54,6 +54,13 @@
         });
     }
 
+    function optQueryParam(name, val) {
+        if (val) {
+            "&"+name+"="+encodeURIComponent(val)
+        }
+        return "";
+    }
+
     var code_server = {
         url: "{{ingress_protocol}}://{{session_namespace}}.{{ingress_domain}}/code-server",
 
@@ -81,9 +88,10 @@
             retryOnFail("code_server.paste_in_file", 15, function () {
                 eduk8s.expose_dashboard("editor");
                 var url = code_server.url+"/editor/paste?file="+encodeURIComponent(file)+
-                    "&yamlPath="+encodeURIComponent(yamlPath)+
-                    "&prefix="+encodeURIComponent(prefix)+
-                    "&paste="+encodeURIComponent(paste);
+                    "&paste="+encodeURIComponent(paste) +
+                    optQueryParam("yamlPath", yamlPath)+
+                    optQueryParam("prefix", prefix)+
+                    optQueryParam("paste");
                 console.log("request url = "+url);
                 return $.get(url);
             });
