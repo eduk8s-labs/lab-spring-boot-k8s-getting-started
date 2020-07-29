@@ -56,7 +56,7 @@
 
     function optQueryParam(name, val) {
         if (val) {
-            "&"+name+"="+encodeURIComponent(val)
+            return "&"+name+"="+encodeURIComponent(val)
         }
         return "";
     }
