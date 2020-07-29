@@ -2,7 +2,16 @@
 
 The first thing we will do is create a Spring Boot application. If you have one you prefer to use already in github, you could clone it in the terminal (`git` and `java` are installed already). Or you can create an application from scratch using [start.spring.io](https://start.spring.io).
 
-Click on <span class="editor_command_link" data-command="spring.initializr.maven-project">this link to open the IDE</span> and generate some code using start.spring.io - select the defaults for all options except the dependencies, where you will need webflux and actuator. If you don't want to use the IDE wizard you can use curl in the terminal:
+Click on <span class="editor_command_link" data-command="spring.initializr.maven-project">this link to open the IDE
+<parameter>
+    {
+        "language": "Java",
+        "dependencies": ["actuator", "webflux"],
+        "artifactId": "demo",
+        "groupId": "com.example"
+    }
+    </parameter>
+</span> and generate some code using start.spring.io - select the defaults for all options except the dependencies, where you will need webflux and actuator. If you don't want to use the IDE wizard you can use curl in the terminal:
 
 ```execute
 mkdir -p demo && (cd demo; curl https://start.spring.io/starter.tgz -d dependencies=webflux,actuator | tar -xzvf -)
