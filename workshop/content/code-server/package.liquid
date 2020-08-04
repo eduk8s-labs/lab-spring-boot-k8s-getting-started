@@ -78,7 +78,8 @@
                     type: 'POST',
                     url: code_server.url+"/command/" + encodeURIComponent(commandId),
                     data: JSON.stringify(parameters),
-                    contentType: "application/json"
+                    contentType: "application/json",
+                    dataType: 'text'
                 });
             });
         },
