@@ -40,17 +40,22 @@
         promise.done(function () {
             console.log(name + " SUCCESS");
         })
-        .fail(function () {
-            console.log(name + " FAIL");
-            if (retries>0) {
-                    setTimeout(
-                        function () {
-                            console.log(name +" Retrying...");
-                            retryOnFail(name, retries-1, chunk);
-                        },
-                        1000
-                    );
-                }
+        .fail(function (err) {
+            // Internal server error means error executing stuff on the vscode side - no need to repeat it since we got to VSCode/Code-Server
+            if (err.status !== 500) {
+                console.log(name + " FAIL");
+                if (retries>0) {
+                        setTimeout(
+                            function () {
+                                console.log(name +" Retrying...");
+                                retryOnFail(name, retries-1, chunk);
+                            },
+                            1000
+                        );
+                    }
+            } else {
+                // TODO: expect some object with a reason for failure and show it
+            }
         });
     }
 
