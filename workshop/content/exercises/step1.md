@@ -17,7 +17,7 @@ Click on <span class="editor_command_link" data-command="spring.initializr.maven
 mkdir -p demo && (cd demo; curl https://start.spring.io/starter.tgz -d dependencies=webflux,actuator | tar -xzvf -)
 ```
 
-You can then <span class="editor_link" data-file="/home/eduk8s/exercises/demo/src/main/java/com/example/DemoApplication.java">open up the main application class</span> and have a look at it. And you can build the application in the IDE or on the command line (make sure you are in the correct directory - `demo` if you used the links above):
+You can then <span class="editor_link" data-file="/home/eduk8s/exercises/demo/src/main/java/com/example/demo/DemoApplication.java">open up the main application class</span> and have a look at it. And you can build the application in the IDE or on the command line (make sure you are in the correct directory - `demo` if you used the links above):
 
 ```execute
 cd demo && ./mvnw install
