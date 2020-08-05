@@ -2,7 +2,7 @@
 
 The first thing we will do is create a Spring Boot application. If you have one you prefer to use already in github, you could clone it in the terminal (`git` and `java` are installed already). Or you can create an application from scratch using [start.spring.io](https://start.spring.io).
 
-Click on <span class="editor_command_link" data-command="spring.initializr.maven-project">this link to open the IDE
+Clicking on <span class="editor_command_link" data-command="spring.initializr.maven-project">this link
 <parameter>
     {
         "language": "Java",
@@ -11,11 +11,15 @@ Click on <span class="editor_command_link" data-command="spring.initializr.maven
         "groupId": "com.example"
     }
     </parameter>
-</span> and generate some code using start.spring.io - select the defaults for all options except the dependencies, where you will need webflux and actuator. If you don't want to use the IDE wizard you can use curl in the terminal:
+</span> will launch the [VS Code Spring Initializr extension](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-spring-initializr) in the Editor tab to generate a new Maven project. The Editor will open with a series of prompts. If necessary use your mouse to focus on the input at the top of the Editor window, and then use the Enter key to confirm the suggested defaults for all options including the dependencies. “Spring Boot Actuator” and “Spring Reactive Web” will be preselected.
+
+If you prefer to use curl in the terminal to invoke Spring Initializr, the command below will generate the same result. (There is no need to invoke this command if you used the link above to run the extension in the Editor.)
 
 ```execute
 mkdir -p demo && (cd demo; curl https://start.spring.io/starter.tgz -d dependencies=webflux,actuator | tar -xzvf -)
 ```
+
+NOTE: The Spring Initializr extension will typically also prompt for a folder to download and unzip the generated files at the end of its multi-step flow. The extension used in this workshop has been configured to to do this automatically, using the workshop `exercises/demo` folder.
 
 You can then <span class="editor_link" data-file="/home/eduk8s/exercises/demo/src/main/java/com/example/demo/DemoApplication.java">open up the main application class</span> and have a look at it. And you can build the application in the IDE or on the command line (make sure you are in the correct directory - `demo` if you used the links above):
 
