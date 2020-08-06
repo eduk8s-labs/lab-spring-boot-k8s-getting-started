@@ -1,43 +1,37 @@
-FROM node:current as node
+# Produce VSIX file for vscode-spring-initializr extension at /work/vscode-spring-initializr-0.4.8.vsix
+FROM node:current as vscode-spring-initializr
 RUN mkdir /work
 WORKDIR /work
-ADD https://codeload.github.com/eduk8s/eduk8s-vscode-helper/zip/c7d582231aa2e8f62e9c3d140a80e0381a4aa59e /work/extension.zip
-RUN unzip extension.zip 
-RUN rm extension.zip
-RUN cd eduk8s-vscode-helper-* && npm install && npm run vsce-package && mv *.vsix ..
-
-# Install vscode-spring-initializr forked extension. Replace the original vscode Initializr extension
-RUN mkdir /initializr-work
-WORKDIR /initializr-work
-ADD https://github.com/BoykoAlex/vscode-spring-initializr/archive/customize.zip /initializr-work/initializr-extension.zip
+ADD https://github.com/BoykoAlex/vscode-spring-initializr/archive/customize.zip /work/initializr-extension.zip
 RUN unzip initializr-extension.zip 
 RUN rm initializr-extension.zip
 RUN cd vscode-spring-initializr-* \
     && npm install \
     && npm install vsce --save-dev \
     && ./node_modules/.bin/vsce package \
-    && mv *.vsix /initializr-work
+    && mv *.vsix /work
 
+FROM quay.io/eduk8s/eduk8s-vscode-helper:200805.234901.d03a32e AS vscode-helper
+
+# Produces installed copy of vscode-spring-initializr at /opt/code-server/initializr-extension
 FROM quay.io/eduk8s/pkgs-code-server:200617.031609.8e8a4e1 AS code-server
-
-COPY --from=node --chown=1001:0 /work/eduk8s-vscode-helper-0.0.1.vsix /tmp/eduk8s-vscode-helper-0.0.1.vsix
-RUN mkdir /opt/code-server/java-extensions && \
-    /opt/code-server/bin/code-server --extensions-dir /opt/code-server/java-extensions --install-extension /tmp/eduk8s-vscode-helper-0.0.1.vsix && \
-    rm /tmp/*.vsix
-
-COPY --from=node --chown=1001:0 /initializr-work/vscode-spring-initializr-0.4.8.vsix /tmp/vscode-spring-initializr-0.4.8.vsix
-RUN /opt/code-server/bin/code-server --extensions-dir /opt/code-server/java-extensions --install-extension /tmp/vscode-spring-initializr-0.4.8.vsix && \
+COPY --from=vscode-spring-initializr --chown=1001:0 /work/vscode-spring-initializr-0.4.8.vsix /tmp/vscode-spring-initializr-0.4.8.vsix
+RUN /opt/code-server/bin/code-server --extensions-dir /opt/code-server/initializr-extension --install-extension /tmp/vscode-spring-initializr-0.4.8.vsix && \
     rm /tmp/*.vsix
 
 FROM quay.io/eduk8s/jdk11-environment:200731.081701.f6c3787
 
 # RUN mkdir -p /home/eduk8s/.local/share/code-server/ && cp -r /opt/extensions /home/eduk8s/.local/share/code-server
 
+# Install eduk8s-vscode-helper extension into Code-Server
+COPY --from=vscode-helper --chown=1001:0 /opt/eduk8s/workshop/code-server/extensions/. /opt/code-server/extensions/
+COPY --from=vscode-helper --chown=1001:0 /opt/eduk8s/workshop/gateway/routes/. /opt/eduk8s/workshop/gateway/routes/
+
 # Remove original vscode-initializr extension before the new forked installed
 RUN rm -rf /opt/code-server/extensions/vscjava.vscode-spring-initializr* \
     && rm -rf /opt/vscode-spring-initializr
 
-COPY --from=code-server --chown=1001:0 /opt/code-server/java-extensions /opt/code-server/extensions
+COPY --from=code-server --chown=1001:0 /opt/code-server/initializr-extension/. /opt/code-server/extensions/
 
 # Modify code-server settings to open projects in the current workspace by default
 RUN jq '."spring.initializr.defaultOpenProjectMethod"="Add to Workspace"' ~/.local/share/code-server/User/settings.json > ~/temp_settings.json \
@@ -46,6 +40,3 @@ RUN jq '."spring.initializr.defaultOpenProjectMethod"="Add to Workspace"' ~/.loc
 COPY --chown=1001:0 . /home/eduk8s/
 RUN mv /home/eduk8s/workshop /opt/workshop
 RUN fix-permissions /home/eduk8s
-
-ENV EDITOR_HOME=/opt/workshop/exercises.code-workspace
-

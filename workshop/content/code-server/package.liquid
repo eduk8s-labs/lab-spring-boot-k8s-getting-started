@@ -41,8 +41,8 @@
             console.log(name + " SUCCESS");
         })
         .fail(function (err) {
-            // Internal server error means error executing stuff on the vscode side - no need to repeat it since we got to VSCode/Code-Server
-            if (err.status !== 500) {
+            // 504 Gateway Timeout: Service isn't up yet hence retry.
+            if (err.status === 504) {
                 console.log(name + " FAIL");
                 if (retries>0) {
                         setTimeout(
@@ -69,10 +69,18 @@
     var code_server = {
         url: "{{ingress_protocol}}://{{session_namespace}}.{{ingress_domain}}/code-server",
 
-        open_file: function(file, lineno=1) {
+        open_file: function(file, line=1) {
             retryOnFail("code_server.open_file", 15, function () {
                 eduk8s.expose_dashboard("editor");
-                return $.get(code_server.url+"/editor/line?file="+encodeURIComponent(file)+"&line="+encodeURIComponent(lineno));
+                return $.ajax({
+                    type: 'POST',
+                    url: code_server.url+"/editor/line",
+                    data: JSON.stringify({
+                        file,
+                        line
+                    }),
+                    contentType: "application/json",
+                });
             });
         },
 
@@ -89,17 +97,23 @@
             });
         },
 
-        paste_in_file: function(file, prefix, yamlPath, paste) {
+        paste_in_file: function(file, prefix, yamlPath, paste, line) {
             console.log("paste = ''"+paste+"'");
             retryOnFail("code_server.paste_in_file", 15, function () {
                 eduk8s.expose_dashboard("editor");
-                var url = code_server.url+"/editor/paste?file="+encodeURIComponent(file)+
-                    "&paste="+encodeURIComponent(paste) +
-                    optQueryParam("yamlPath", yamlPath)+
-                    optQueryParam("prefix", prefix)+
-                    optQueryParam("paste");
-                console.log("request url = "+url);
-                return $.get(url);
+                return $.ajax({
+                    type: 'POST',
+                    url: code_server.url+"/editor/paste",
+                    data: JSON.stringify({
+                        file,
+                        prefix,
+                        paste,
+                        yamlPath,
+                        line
+                    }),
+                    contentType: "application/json",
+                    dataType: 'text'
+                });
             });
         }
     };
