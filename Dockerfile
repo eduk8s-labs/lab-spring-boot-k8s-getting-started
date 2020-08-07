@@ -11,7 +11,7 @@ RUN cd vscode-spring-initializr-* \
     && ./node_modules/.bin/vsce package \
     && mv *.vsix /work
 
-FROM quay.io/eduk8s/eduk8s-vscode-helper:200805.234901.d03a32e AS vscode-helper
+FROM quay.io/eduk8s/eduk8s-vscode-helper:200807.182328.2129ce9 AS vscode-helper
 
 # Produces installed copy of vscode-spring-initializr at /opt/code-server/initializr-extension
 FROM quay.io/eduk8s/pkgs-code-server:200617.031609.8e8a4e1 AS code-server
