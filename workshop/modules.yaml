@@ -8,11 +8,6 @@ modules:
     name: Containerize the Application
   exercises/step3:
     name: Deploy the Application in Kubernetes
-  #################################################################
-  ## ide playground not part of the real content...
-  # should be removed for final/production version of workshop content.
-  playground:
-    name: Experiments with IDE
   finish:
     name: Workshop Summary
     exit_sign: Finish Workshop
