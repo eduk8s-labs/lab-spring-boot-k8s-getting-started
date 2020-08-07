@@ -49,3 +49,49 @@ echo "Text to copy"
 You may also see links that can be clicked to open a file in the editor: {% render "code-server/open-file-widget.liquid", file: "/home/eduk8s/Dockerfile", lineno: 8 %}
 
 There are also links to execute commands in the IDE, e.g: <span class="editor_command_link" data-command="workbench.action.terminal.toggleTerminal">Open Terminal</span>.
+
+
+Or paste into a new file works too:
+
+<pre class="pastable" data-file="/tmp/deploy.yml">
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+  labels:
+    app: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nother
+          piece: here
+        - name: nginx
+          image: nginx:1.14.2
+          ports:
+          - containerPort: 80
+</pre>
+
+Text can also be pasted into a specific 'yaml path' location inside an existing yaml file.
+For example, the following pastes an extra container definition into the
+file created in the previous step:
+
+<pre class="pastable" data-file="/tmp/deploy.yml" data-yaml-path="spec.template.spec.containers">
+- name: another-container
+  image: blah
+  ports:
+  - containerPort: 6677
+</pre>
+
+<pre class="pastable" data-file="/tmp/deploy.yml" data-yaml-path="spec.template.spec.containers[0]">
+blah: blah
+froo: froooooo
+</pre>
+
