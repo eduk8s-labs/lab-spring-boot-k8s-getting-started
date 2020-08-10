@@ -19,12 +19,6 @@ You will notice in the output that you see information of the version of your se
 
 Now we can deploy our Spring Boot application.
 
-To prepare for the deployment there is a secret that we need to apply once, so that Kubernetes can pull images from the private repo we have been using:
-
-```execute
-kubectl create secret generic registry-credentials --from-file=.dockerconfigjson=$HOME/.docker/config.json --type=kubernetes.io/dockerconfigjson
-```
-
 You have a container that runs and exposes port 8080, so all you need to make Kubernetes run it is some YAML. To avoid having to look at or edit YAML, for now, you can ask `kubectl` to generate it for you. The only thing that might vary here is the `--image` name. If you deployed your container to your own repository, use its tag instead of this one:
 
 ```execute
@@ -34,7 +28,7 @@ kubectl create deployment demo --image={{ REGISTRY_HOST }}/springguides/demo --d
 Patch the deployment to add image pull secrets for our private registry:
 
 ```execute
-sed -i '/    spec:/a \      imagePullSecrets:\n      - name: registry-credentials' deployment.yaml
+sed -i '/    spec:/a \      imagePullSecrets:\n      - name: eduk8s-registry-credentials' deployment.yaml
 ```
 
 Now create a service (TCP endpoint) for the application by appending to the YAML we already have:
