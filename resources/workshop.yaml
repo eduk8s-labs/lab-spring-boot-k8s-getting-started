@@ -6,11 +6,11 @@ spec:
   vendor: eduk8s.io
   title: Getting Started with Spring Boot on Kubernetes
   description: Create your first Spring Boot application and deploy it to Kubernetes
-  url: https://github.com/eduk8s-tests/lab-spring-boot-k8s-getting-started
+  url: https://github.com/eduk8s-labs/lab-spring-boot-k8s-getting-started
   duration: 15m
   content: 
-    image: quay.io/eduk8s-tests/lab-spring-boot-k8s-getting-started:latest
-    files: github.com/eduk8s-tests/lab-spring-boot-k8s-getting-started
+    image: quay.io/eduk8s-labs/lab-spring-boot-k8s-getting-started:latest
+    files: github.com/eduk8s-labs/lab-spring-boot-k8s-getting-started
   session:
     namespaces:
       budget: large
