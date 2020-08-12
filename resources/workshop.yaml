@@ -12,7 +12,8 @@ spec:
     image: quay.io/eduk8s-tests/lab-spring-boot-k8s-getting-started:latest
     files: github.com/eduk8s-tests/lab-spring-boot-k8s-getting-started
   session:
-    budget: large
+    namespaces:
+      budget: large
     resources:
       memory: 2Gi
     applications:
