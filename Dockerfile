@@ -11,7 +11,7 @@ RUN cd vscode-spring-initializr-* \
     && ./node_modules/.bin/vsce package \
     && mv *.vsix /work
 
-FROM quay.io/eduk8s/eduk8s-vscode-helper:200807.182328.2129ce9 AS vscode-helper
+# FROM quay.io/eduk8s/eduk8s-vscode-helper:200807.212053.ffee6d6 AS vscode-helper
 
 # Produces installed copy of vscode-spring-initializr at /opt/code-server/initializr-extension
 FROM quay.io/eduk8s/pkgs-code-server:200617.031609.8e8a4e1 AS code-server
@@ -19,13 +19,13 @@ COPY --from=vscode-spring-initializr --chown=1001:0 /work/vscode-spring-initiali
 RUN /opt/code-server/bin/code-server --extensions-dir /opt/code-server/initializr-extension --install-extension /tmp/vscode-spring-initializr-0.4.8.vsix && \
     rm /tmp/*.vsix
 
-FROM quay.io/eduk8s/jdk11-environment:200731.081701.f6c3787
+FROM quay.io/eduk8s/jdk11-environment:200812.083109.0c403c4
 
 # RUN mkdir -p /home/eduk8s/.local/share/code-server/ && cp -r /opt/extensions /home/eduk8s/.local/share/code-server
 
 # Install eduk8s-vscode-helper extension into Code-Server
-COPY --from=vscode-helper --chown=1001:0 /opt/eduk8s/workshop/code-server/extensions/. /opt/code-server/extensions/
-COPY --from=vscode-helper --chown=1001:0 /opt/eduk8s/workshop/gateway/routes/. /opt/eduk8s/workshop/gateway/routes/
+# COPY --from=vscode-helper --chown=1001:0 /opt/eduk8s/workshop/code-server/extensions/. /opt/code-server/extensions/
+# COPY --from=vscode-helper --chown=1001:0 /opt/eduk8s/workshop/gateway/routes/. /opt/eduk8s/workshop/gateway/routes/
 
 # Remove original vscode-initializr extension before the new forked installed
 RUN rm -rf /opt/code-server/extensions/vscjava.vscode-spring-initializr* \
