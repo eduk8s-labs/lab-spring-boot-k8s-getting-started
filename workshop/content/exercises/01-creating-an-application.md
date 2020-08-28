@@ -22,7 +22,7 @@ You can see the result by running:
 tree demo
 ```
 
-You will note that in this case we specified that we wanted the `webflux` and `actuator` modules installed as dependencies.
+You will note that in this case we specified that we wanted the `webflux` and `actuator` modules listed as dependencies.
 
 Even though we have got some source code for our application now, we aren't going to use this either, as we want to show you one more way you can generate the application code. This time we are going to use the **spring initialzer** extension for the VS Code editor. Before we do that, remove the `demo` directory by running:
 
@@ -49,7 +49,7 @@ When the command popup appears in the editor, accept all the defaults. At the en
 
 > NOTE: The Spring Initializr extension will usually also prompt for a folder to download and unzip the generated files at the end of its multi-step workflow. The extension used in this workshop has been configured to do this automatically, using the workshop `~/exercises/demo` folder as the target.
 
-To verify that the application code has been generate successfully, open up the main Java source code file for the application.
+To verify that the application code has been generated successfully, open up the main Java source code file for the application.
 
 ```editor:open-file
 file: ~/exercises/demo/src/main/java/com/example/demo/DemoApplication.java
