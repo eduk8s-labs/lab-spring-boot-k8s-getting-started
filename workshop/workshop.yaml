@@ -4,7 +4,8 @@ modules:
     activate:
         - workshop-overview
         - setup-environment
-        - exercises/step1
+        - exercises/01-creating-an-application
+        - exercises/02-building-the-application
         - exercises/step2
         - exercises/step3
         - workshop-summary

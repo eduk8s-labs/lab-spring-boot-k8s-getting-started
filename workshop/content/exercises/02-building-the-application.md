@@ -1,5 +1,4 @@
-{% include "code-server/package.liquid" %}
-
+{% comment %}
 The first thing we will do is create a Spring Boot application. If you have one you prefer to use already in github, you could clone it in the terminal (`git` and `java` are installed already). Or you can create an application from scratch using [start.spring.io](https://start.spring.io).
 
 Clicking on <span class="editor_command_link" data-command="spring.initializr.maven-project">this link
@@ -25,6 +24,21 @@ You can then <span class="editor_link" data-file="/home/eduk8s/exercises/demo/sr
 
 ```execute
 cd demo && ./mvnw install
+```
+{% endcomment %}
+
+We are now ready to build the application source code. We will first do this direct into the local directory.
+
+Change to the ``demo`` sub directory.
+
+```execute
+cd ~/exercises/demo
+```
+
+Then run Maven to start the build.
+
+```execute
+./mvnw install
 ```
 
 > NOTE: It will take a couple of minutes the first time, but then once the dependencies are all cached it will be fast.
