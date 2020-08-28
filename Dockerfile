@@ -38,5 +38,6 @@ RUN jq '."spring.initializr.defaultOpenProjectMethod"="Add to Workspace"' ~/.loc
     && mv ~/temp_settings.json ~/.local/share/code-server/User/settings.json
 
 COPY --chown=1001:0 . /home/eduk8s/
-RUN mv /home/eduk8s/workshop /opt/workshop
+RUN mv /home/eduk8s/workshop /opt/workshop && \
+    rm -f /home/eduk8s/exercises/.empty
 RUN fix-permissions /home/eduk8s
