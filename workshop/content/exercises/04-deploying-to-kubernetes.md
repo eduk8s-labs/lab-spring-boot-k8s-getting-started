@@ -1,12 +1,24 @@
 {% include "code-server/package.liquid" %}
 
-Before you can start, you need to install and start the Kubernetes cluster. In this environment we have already taken care of that for you. The lab is running in a Kubernetes cluster and you have access to your own namespace in the same cluster.
+Before we can deploy the container image to Kubernetes, it needs to be made available via an image registry from which Kubernetes can pull the image when deploying it.
 
-Check that you have a Kubernetes cluster running:
+This workshop environment provides you with your own image registry located at `{{ registry_host }}` and the user your workshop environment runs as has already been authenticated against the image registry.
+
+As the container image when built was tagged with the image registry name, we need only push the image to the registry.
+
+```execute
+docker push {{ registry_host }}/springguides/demo
+```
+
+We now need a Kubernetes cluster. In this workshop environment we have already taken care of that for you. The workshop is running in a Kubernetes cluster and you have access to your own namespace in the same cluster.
+
+To check that you can access the Kubernetes cluster okay, run:
 
 ```execute
 kubectl version
 ```
+
+The output should be similar to the following, although the version of Kubernetes may differ.
 
 ```
 Client Version: version.Info{Major:"1", Minor:"17", GitVersion:"v1.17.5", GitCommit:"e0fccafd69541e3750d460ba0f9743b90336f24f", GitTreeState:"clean", BuildDate:"2020-04-16
@@ -14,8 +26,6 @@ T11:44:03Z", GoVersion:"go1.13.9", Compiler:"gc", Platform:"linux/amd64"}
 Server Version: version.Info{Major:"1", Minor:"17", GitVersion:"v1.17.4+vmware.1", GitCommit:"2e240196fa7251c7f1ff96392db857c281f534e5", GitTreeState:"clean", BuildDate:"2
 020-04-16T04:00:11Z", GoVersion:"go1.13.8", Compiler:"gc", Platform:"linux/amd64"}
 ```
-
-You will notice in the output that you see information of the version of your server Kubernetes cluster.
 
 Now we can deploy our Spring Boot application.
 
