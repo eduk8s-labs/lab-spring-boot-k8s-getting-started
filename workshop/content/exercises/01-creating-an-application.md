@@ -13,7 +13,7 @@ Although we can't use the web interface for start.spring.io to create the applic
 To use the REST API service you would make a request against the URL `https://start.spring.io/starter.tgz`, supplying HTTP POST parameters describing the details for your application. This can be done using `curl` as follows:
 
 ```execute
-mkdir -p demo && (cd demo; curl https://start.spring.io/starter.tgz -d dependencies=webflux,actuator | tar -xzvf -)
+mkdir -p demo && (cd demo; curl -s https://start.spring.io/starter.tgz -d dependencies=webflux,actuator | tar -xzvf -)
 ```
 
 You can see the result by running:
