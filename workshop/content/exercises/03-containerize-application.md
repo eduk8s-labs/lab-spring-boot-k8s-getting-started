@@ -46,11 +46,3 @@ Kill the application once more.
 
 ```terminal:interrupt
 ```
-
-> NOTE: In this tutorial environment, you will be able to push the image even though you did not authenticate with Dockerhub (`docker login`). If you are running locally you can change the image label and push to Dockerhub, or there's an image `springguides/demo` already there that should work if you want to skip this step.
-
-```execute
-docker push {{ registry_host }}/springguides/demo
-```
-
-The image needs to be pushed to an accessible registry because Kubernetes pulls the image from inside its Kubelets (nodes), which are not in general connected to the local docker daemon.
