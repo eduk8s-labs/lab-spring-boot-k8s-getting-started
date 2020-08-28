@@ -16,13 +16,13 @@ To use the REST API service you would make a request against the URL `https://st
 mkdir -p demo && (cd demo; curl -s https://start.spring.io/starter.tgz -d dependencies=webflux,actuator | tar -xzvf -)
 ```
 
+You will note that in this case we specified that we wanted the `webflux` and `actuator` modules listed as dependencies.
+
 You can see the result by running:
 
 ```execute
 tree demo
 ```
-
-You will note that in this case we specified that we wanted the `webflux` and `actuator` modules listed as dependencies.
 
 Even though we have got some source code for our application now, we aren't going to use this either, as we want to show you one more way you can generate the application code. This time we are going to use the **spring initialzer** extension for the VS Code editor. Before we do that, remove the `demo` directory by running:
 
