@@ -6,6 +6,6 @@ modules:
         - setup-environment
         - exercises/01-creating-an-application
         - exercises/02-building-the-application
-        - exercises/step2
-        - exercises/step3
+        - exercises/03-containerize-application
+        - exercises/04-deploying-to-kubernetes
         - workshop-summary
