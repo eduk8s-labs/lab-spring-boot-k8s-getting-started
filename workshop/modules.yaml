@@ -1,6 +1,9 @@
 modules:
-  intro:
-    name: Intro
+  workshop-overview:
+    name: Workshop Overview
+    exit_sign: Setup Environment
+  setup-environment:
+    name: Setup Environment
     exit_sign: Start Workshop
   exercises/step1:
     name: Create a Spring Boot application
@@ -8,13 +11,6 @@ modules:
     name: Containerize the Application
   exercises/step3:
     name: Deploy the Application in Kubernetes
-  finish:
+  workshop-summary:
     name: Workshop Summary
     exit_sign: Finish Workshop
-  ##################################################################
-config:
-  vars:
-    - name: REGISTRY_HOST
-    - name: REGISTRY_AUTH_FILE
-    - name: REGISTRY_USERNAME
-    - name: REGISTRY_PASSWORD

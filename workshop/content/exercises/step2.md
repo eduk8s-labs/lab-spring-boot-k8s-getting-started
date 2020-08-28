@@ -1,13 +1,13 @@
-Build the container image, giving it a tag (choose your own ID instead of "{{ REGISTRY_HOST }}/springguides" if you are going to push to Dockerhub):
+Build the container image, giving it a tag (choose your own ID instead of "{{ registry_host }}/springguides" if you are going to push to Dockerhub):
 
 ```execute
-./mvnw package spring-boot:build-image -Dspring-boot.build-image.imageName={{ REGISTRY_HOST }}/springguides/demo
+./mvnw package spring-boot:build-image -Dspring-boot.build-image.imageName={{ registry_host }}/springguides/demo
 ```
 
 Note that you did not need a `Dockerfile`. You can run the container on the command line using `docker`:
 
 ```execute
-docker run -p 8080:8080 {{ REGISTRY_HOST }}/springguides/demo
+docker run -p 8080:8080 {{ registry_host }}/springguides/demo
 ```
 
 Sample output:
@@ -47,7 +47,7 @@ Finish off by killing the container:
 > NOTE: In this tutorial environment, you will be able to push the image even though you did not authenticate with Dockerhub (`docker login`). If you are running locally you can change the image label and push to Dockerhub, or there's an image `springguides/demo` already there that should work if you want to skip this step.
 
 ```execute
-docker push {{ REGISTRY_HOST }}/springguides/demo
+docker push {{ registry_host }}/springguides/demo
 ```
 
 The image needs to be pushed to an accessible registry because Kubernetes pulls the image from inside its Kubelets (nodes), which are not in general connected to the local docker daemon.

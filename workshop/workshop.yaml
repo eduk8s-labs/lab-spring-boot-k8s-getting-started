@@ -2,8 +2,9 @@ name: Markdown Sample
 
 modules:
     activate:
-        - intro
+        - workshop-overview
+        - setup-environment
         - exercises/step1
         - exercises/step2
         - exercises/step3
-        - finish
+        - workshop-summary
