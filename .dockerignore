@@ -5,3 +5,4 @@ Dockerfile
 LICENSE
 kustomization.yaml
 maven-cache-docker
+exercises/.empty
