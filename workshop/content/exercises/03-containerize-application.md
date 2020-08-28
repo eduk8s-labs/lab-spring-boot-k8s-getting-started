@@ -39,7 +39,7 @@ curl localhost:8080/actuator/health
 The output should be:
 
 ```
-{"status":"UP","groups":["liveness","readiness"]}
+{"status":"UP"}
 ```
 
 Kill the application once more.
