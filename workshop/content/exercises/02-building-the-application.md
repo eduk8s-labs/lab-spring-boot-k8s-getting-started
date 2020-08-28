@@ -26,7 +26,7 @@ To test that the application works, run Java with the application JAR file:
 java -jar target/*.jar
 ```
 
-Because we added the `actuator` module as a dependency, a number of HTTP endpoints already exists.
+Because we added the `actuator` module as a dependency, a number of HTTP endpoints already exist.
 
 To test the application and see what endpoints were added, run:
 
