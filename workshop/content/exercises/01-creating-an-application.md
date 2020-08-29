@@ -1,6 +1,6 @@
-The first thing we need to do is create a Spring Boot application. There are a few ways you can quickly create a new Spring Boot application from scratch.
+The first thing we need to do is create a Spring Boot application. We are going to look at three different ways you can quickly create a new Spring Boot application from scratch.
 
-A popular method is to use the **spring initialzer** site at [start.spring.io](https://start.spring.io/).
+The first method is to use the **spring initialzr** site at [start.spring.io](https://start.spring.io/).
 
 ![](spring-initializr-web-site.png)
 
@@ -8,29 +8,11 @@ The purpose of the web site is to allow you to enter in details about the Spring
 
 We will not be using this method because if used it will download the resulting application to your local computer, rather than this workshop environment. So great for when you do want to get started on your own machine, but not so here.
 
-Although we can't use the web interface for start.spring.io to create the application for this workshop, the web site does provide an alternate waying of creating an application through a REST API service.
+Although we can't use the web interface for start.spring.io to create the application for this workshop, the web site does provide an alternate waying of creating an application through a REST API service. The REST API can be used directly, or via other front end interfaces.
 
-To use the REST API service you would make a request against the URL `https://start.spring.io/starter.tgz`, supplying HTTP POST parameters describing the details for your application. This can be done using `curl` as follows:
+The second method you can use, if you use the VS Code editor, is to use the [spring initialzr extension](https://github.com/microsoft/vscode-spring-initializr) for VS code. This extension calls out to the REST API to download the application code.
 
-```execute
-mkdir -p demo && (cd demo; curl -s https://start.spring.io/starter.tgz -d dependencies=webflux,actuator | tar -xzvf -)
-```
-
-You will note that in this case we specified that we wanted the `webflux` and `actuator` modules listed as dependencies.
-
-You can see the result by running:
-
-```execute
-tree demo
-```
-
-Even though we have got some source code for our application now, we aren't going to use this either, as we want to show you one more way you can generate the application code. This time we are going to use the **spring initialzer** extension for the VS Code editor. Before we do that, remove the `demo` directory by running:
-
-```execute
-rm -rf demo
-```
-
-If you are a VS Code user, you will need to first have installed the [spring initialzer extension](https://github.com/microsoft/vscode-spring-initializr). You can find and install it by searching for "Initializr" in the VS Code extensions manager. In this workshop environment we already have the extension installed so there is no need to install it.
+You can find and install this extension by searching for "Initializr" in the VS Code extensions manager. In this workshop environment we already have the extension installed as part of the embedded VS Code editor, so there is no need to install it.
 
 To make use of the extension you would bring up the VS Code command pallete and search for "Spring Initializr", and select the desired command, depending on whether you want to use Maven or Gradle.
 
@@ -45,9 +27,29 @@ args:
   groupId: com.example
 ```
 
-When the command popup appears in the editor, accept all the defaults. At the end the application code will be generated into the editor workspace.
+When the command popup appears in the editor, accept all the defaults.
+
+You will note that in this case we specified that we wanted the `webflux` and `actuator` modules listed as dependencies.
+
+At the end the application code will be generated into the editor workspace.
 
 > NOTE: The Spring Initializr extension will usually also prompt for a folder to download and unzip the generated files at the end of its multi-step workflow. The extension used in this workshop has been configured to do this automatically, using the workshop `~/exercises/demo` folder as the target.
+
+The REST API can also be used directly from the command line by making a request against the URL `https://start.spring.io/starter.tgz`, supplying HTTP POST parameters describing the details for your application.
+
+You can use `curl` to do this, and then unpack it with a command such as:
+
+```execute
+rm -rf demo && mkdir -p demo && (cd demo; curl -s https://start.spring.io/starter.tgz -d dependencies=webflux,actuator | tar -xzvf -)
+```
+
+You will again note that we specified that we wanted the `webflux` and `actuator` modules listed as dependencies.
+
+You can see the result by running:
+
+```execute
+tree demo
+```
 
 To verify that the application code has been generated successfully, open up the main Java source code file for the application.
 
