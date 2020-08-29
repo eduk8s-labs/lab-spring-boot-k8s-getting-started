@@ -8,7 +8,7 @@ The purpose of the web site is to allow you to enter in details about the Spring
 
 We will not be using this method because if used it will download the resulting application to your local computer, rather than this workshop environment. So great for when you do want to get started on your own machine, but not so here.
 
-Although we can't use the web interface for start.spring.io to create the application for this workshop, the web site does provide an alternate waying of creating an application through a REST API service. The REST API can be used directly, or via other front end interfaces.
+Although we can't use the web interface for start.spring.io to create the application for this workshop, the web site does provide an alternate way of creating an application through a REST API service. The REST API can be used directly, or via other front end interfaces.
 
 The second method you can use, if you use the VS Code editor, is to use the [spring initialzr extension](https://github.com/microsoft/vscode-spring-initializr) for VS code. This extension calls out to the REST API to download the application code.
 
@@ -27,7 +27,7 @@ args:
   groupId: com.example
 ```
 
-When the command popup appears in the editor, accept all the defaults.
+When the command popup appears in the editor on the right, accept all the defaults.
 
 You will note that in this case we specified that we wanted the `webflux` and `actuator` modules listed as dependencies.
 
@@ -37,7 +37,7 @@ At the end the application code will be generated into the editor workspace.
 
 The REST API can also be used directly from the command line by making a request against the URL `https://start.spring.io/starter.tgz`, supplying HTTP POST parameters describing the details for your application.
 
-You can use `curl` to do this, and then unpack it with a command such as:
+For our third method we will use `curl` to do this, and then unpack it. Run the command:
 
 ```execute
 rm -rf demo && mkdir -p demo && (cd demo; curl -s https://start.spring.io/starter.tgz -d dependencies=webflux,actuator | tar -xzvf -)
