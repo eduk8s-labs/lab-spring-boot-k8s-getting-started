@@ -14,12 +14,12 @@ RUN cd vscode-spring-initializr-* \
 # FROM quay.io/eduk8s/eduk8s-vscode-helper:200807.212053.ffee6d6 AS vscode-helper
 
 # Produces installed copy of vscode-spring-initializr at /opt/code-server/initializr-extension
-FROM quay.io/eduk8s/pkgs-code-server:200617.031609.8e8a4e1 AS code-server
+FROM quay.io/eduk8s/pkgs-code-server:200928.030821.a385a93 AS code-server
 COPY --from=vscode-spring-initializr --chown=1001:0 /work/vscode-spring-initializr-0.4.8.vsix /tmp/vscode-spring-initializr-0.4.8.vsix
 RUN /opt/code-server/bin/code-server --extensions-dir /opt/code-server/initializr-extension --install-extension /tmp/vscode-spring-initializr-0.4.8.vsix && \
     rm /tmp/*.vsix
 
-FROM quay.io/eduk8s/jdk11-environment:200829.022346.7ca3e6c
+FROM quay.io/eduk8s/jdk11-environment:201028.062054.1a73b54
 
 # RUN mkdir -p /home/eduk8s/.local/share/code-server/ && cp -r /opt/extensions /home/eduk8s/.local/share/code-server
 
