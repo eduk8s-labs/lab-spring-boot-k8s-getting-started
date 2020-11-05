@@ -9,7 +9,7 @@ spec:
   url: https://github.com/eduk8s-labs/lab-spring-boot-k8s-getting-started
   duration: 15m
   content: 
-    image: quay.io/eduk8s-labs/lab-spring-boot-k8s-getting-started:latest
+    image: jdk11-environment:*
     files: github.com/eduk8s-labs/lab-spring-boot-k8s-getting-started
   session:
     namespaces:
@@ -29,9 +29,3 @@ spec:
         enabled: true
       docker:
         enabled: true
-    ingresses:
-    - name: application
-      port: 8080
-    #dashboards:
-    #- name: Application
-    #  url: "$(ingress_protocol)://$(session_namespace)-application.$(ingress_domain)/"      
